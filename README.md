@@ -4,9 +4,7 @@ I needed to improve my python skills and had a few ideas. I had a few ideas of w
 ## Diary
 Command Line Diary System
 ### Requirement
-```
-pip install mysql-connector-python
-```
+    pip install mysql-connector-python
 - Create acccount function
 - Login Function
 - Password needs to meet requirement
