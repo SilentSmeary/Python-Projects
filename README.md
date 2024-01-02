@@ -6,12 +6,12 @@ I needed to improve my python skills and had a few ideas. I had a few ideas of w
 - Login Function
 - Password needs to meet requirement
   	- 6 - 12 characters
-	  - 3 Numbers
-	  - Atleast one special character (!@#$%)
+	- 3 Numbers
+	- Atleast one special character (!@#$%)
 - Clean and informative UI
 - View all the posts that you have made
 - Make new posts
 - post fields
-	  - Diary Title:
-	  - Diary Date:
-	  - Main Diary Content:
+	- Diary Title:
+	- Diary Date:
+	- Main Diary Content:
