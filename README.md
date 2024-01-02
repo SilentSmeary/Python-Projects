@@ -6,16 +6,16 @@ Command Line Diary System
 ### Requirement
     pip install mysql-connector-python
 ### Features
-- Create acccount function
-- Login Function
-- Password needs to meet requirement
-  	- 6 - 12 characters
-	- 3 Numbers
-	- Atleast one special character (!@#$%)
-- Clean and informative UI
-- View all the posts that you have made
-- Make new posts
-- post fields
-	- Diary Title:
-	- Diary Date:
-	- Main Diary Content:
+- [x] Create acccount function
+- [ ] Login Function
+- [ ] Password needs to meet requirement
+  	- [ ] 6 - 12 characters
+	- [ ] 3 Numbers
+	- [ ] Atleast one special character (!@#$%)
+- [ ] Clean and informative UI
+- [ ] View all the posts that you have made
+- [ ] Make new posts
+- [ ] Diary Submissions
+	- [ ] Diary Title:
+	- [ ] Diary Date:
+	- [ ] Main Diary Content:
