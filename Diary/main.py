@@ -1,25 +1,29 @@
 import mysql.connector
 from datetime import date
 
-# Replace these values with your MySQL server information
-host = "localhost"
-user = "root"
-password = ""
-database = "diary"
+config = {
+    'host' : "localhost",
+    'user' : "root",
+    'password' : "",
+    'database' : "diary",
+
+    'debug': True, 
+    'other_setting': 'value'
+}
 
 def create_connection():
     try:
         # Establish the connection
         connection = mysql.connector.connect(
-            host=host,
-            user=user,
-            password=password,
-            database=database
+            host = config.get('host'),
+            user = config.get('user'),
+            password = config.get('password'),
+            database = config.get('database')
         )
 
         if connection.is_connected():
-            print("Connected to MySQL database")
-            return connection  # Return the connection object
+            pass
+        return connection  # Return the connection object
 
     except mysql.connector.Error as err:
         print(f"Error: {err}")
@@ -63,7 +67,10 @@ def create_account():
             # Commit the changes to the database
             connection.commit()
 
-            print("Data inserted successfully")
+            if config.get('debug', True):
+                print("Data inserted successfully")
+            else:
+                pass
 
         except mysql.connector.Error as err:
             print(f"Error: {err}")
