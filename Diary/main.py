@@ -82,30 +82,27 @@ def create_account():
             # Close the connection when done
             close_connection(connection, cursor)
 
-def login():
+def login(acc_email, acc_password):
     connection = create_connection()  # Call the create_connection function
     if connection:
         try:
             # Create a cursor object to execute SQL queries
             cursor = connection.cursor()
 
-            email = input("Enter your Email: ")
-            password = input("Enter your Password: ")
-
             # SQL query for fetching user details
             select_query = "SELECT * FROM users WHERE email = %s"
 
             # Execute the query with the email
-            cursor.execute(select_query, (email,))
+            cursor.execute(select_query, (acc_email,))
 
             # Fetch the result
             result = cursor.fetchone()
 
             if result:
                 # Check if the entered password matches the password from the result
-                if password == result[3]:  # Assuming the password is at index 3
+                if acc_password == result[3]:  # Assuming the password is at index 3
                     print("Login successful")
-                    return True
+                    post_management(acc_email)
                 else:
                     print("Incorrect password")
                     return False
@@ -139,11 +136,39 @@ def account_management():
             case "1"  : 
                 create_account()
             case "2" : 
-                login()
+                acc_email = input("Enter your Email: ")
+                acc_password = input("Enter your Password: ")
+                login(acc_email, acc_password)
             case _  : 
                 print("Please choose a valid choice!")
 
 # Posts Management
+
+def post_management(acc_email):
+    print("██████╗░░█████╗░░██████╗████████╗  ███╗░░░███╗░█████╗░███╗░░██╗░█████╗░░██████╗░███████╗███╗░░░███╗███████╗███╗░░██╗████████╗")
+    print("██╔══██╗██╔══██╗██╔════╝╚══██╔══╝  ████╗░████║██╔══██╗████╗░██║██╔══██╗██╔════╝░██╔════╝████╗░████║██╔════╝████╗░██║╚══██╔══╝")
+    print("██████╔╝██║░░██║╚█████╗░░░░██║░░░  ██╔████╔██║███████║██╔██╗██║███████║██║░░██╗░█████╗░░██╔████╔██║█████╗░░██╔██╗██║░░░██║░░░")
+    print("██╔═══╝░██║░░██║░╚═══██╗░░░██║░░░  ██║╚██╔╝██║██╔══██║██║╚████║██╔══██║██║░░╚██╗██╔══╝░░██║╚██╔╝██║██╔══╝░░██║╚████║░░░██║░░░")
+    print("██║░░░░░╚█████╔╝██████╔╝░░░██║░░░  ██║░╚═╝░██║██║░░██║██║░╚███║██║░░██║╚██████╔╝███████╗██║░╚═╝░██║███████╗██║░╚███║░░░██║░░░")
+    print("╚═╝░░░░░░╚════╝░╚═════╝░░░░╚═╝░░░  ╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝░╚═════╝░╚══════╝╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚══╝░░░╚═╝░░░")
+    print("")
+    print("Loading ...")
+    time.sleep(5)
+    print("[1] Create a new Diary Entry")
+    print("[2] View previous Diary Entries")
+    choice = input("Enter your choice: ")
+    match choice:
+        case "1"  : 
+            get_user_id(acc_email)
+            time.sleep(10)
+            print("Processing Account Data...")
+            create_post()
+        case "2" : 
+            login(email, password)
+        case _  : 
+            print("Please choose a valid choice!")
+
+
 
 if __name__ == "__main__":
     account_management()
