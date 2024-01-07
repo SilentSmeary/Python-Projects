@@ -168,6 +168,38 @@ def post_management(acc_email):
         case _  : 
             print("Please choose a valid choice!")
 
+def get_user_id(acc_email):
+    connection = create_connection()  # Call the create_connection function
+    if connection:
+        try:
+            # Create a cursor object to execute SQL queries
+            cursor = connection.cursor()
+
+            # SQL query for fetching user_id
+            select_query = "SELECT user_id FROM users WHERE email = %s"
+
+            # Execute the query with the email
+            cursor.execute(select_query, (acc_email,))
+
+            # Fetch the result
+            result = cursor.fetchone()
+
+            if result:
+                # Store the user_id in a variable
+                user_id = result[0]
+                print(user_id)
+                return user_id
+            else:
+                print("Email does not exist")
+                return None
+
+        except mysql.connector.Error as err:
+            print(f"Error: {err}")
+            return None
+    else:
+        print("Failed to connect to the database")
+        return None
+
 
 
 if __name__ == "__main__":
