@@ -4,7 +4,10 @@ I needed to improve my Python skills and had a few ideas. I had a few ideas of w
 ## Diary
 Python-based Command Line Interface that uses MySQL to store all the data in the backend.
 ### Requirement
-    pip install mysql-connector-python
+MySQL
+```
+pip install mysql-connector-python
+```
 ### Features
 - [x] Create account function
 - [x] Login Function
